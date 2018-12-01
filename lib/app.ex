@@ -3,8 +3,14 @@ defmodule App do
   use Application
   require Logger
 
-  defp cowboy_port, do:
-    Application.get_env(:infnet_devjava_assessment_ap, :cowboy_port, 80)
+  defp cowboy_port do
+    with {port, _} <- Integer.parse(System.get_env("PORT"))
+      do
+      port
+    else
+      _ -> Application.get_env(:infnet_devjava_assessment_api, :cowboy_port, 8080)
+    end
+  end
 
   def start(_type, _args) do
     children = [

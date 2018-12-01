@@ -3,6 +3,6 @@
 use Mix.Config
 
 config :infnet_devjava_assessment_api,
-       cowboy_port: 82
+       PORT: 82
 
-#import_config "#{Mix.env}.exs"
+import_config "#{Mix.env}.exs"
